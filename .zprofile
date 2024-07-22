@@ -11,9 +11,6 @@ source "$HOME/.go/env"
 # Added by OrbStack: command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
-# BitWarden CLI session key
-BW_SESSION="A9eZEfHLE8w2Y/NSY1+7GA455SiW6BDYZj29Iebziuua1XhY/pfalglpqYMsm2vyFrXN6VFttQj0E3te+JZldQ=="
-
 alias azsub="$HOME/Source/davenicoll/azure-subscription-chooser/subscription-chooser.sh"
 
 eval "$(pyenv init --path)"
