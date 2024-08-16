@@ -11,6 +11,10 @@ ln -sf "$PWD/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlec
 rm ~/Library/Fonts/JetBrainsMonoNerd*
 rm ~/Library/Fonts/JetBrainsMonoNLNerdFont*
 
+# Install warp theme
+mkdir -p "$HOME/.warp/themes"
+ln -sf "$PWD/.dn-warp-theme.yaml" "$HOME/.warp/themes/dn-warp-theme.yaml"
+
 # Symlink font files
 for font_file in fonts/*.ttf; do
   base_name=$(basename "$font_file")
