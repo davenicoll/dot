@@ -5,6 +5,10 @@ echo "This script will install tools and modify system settings. Requesting sudo
 # Authenticate as admin up front
 sudo -v
 
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
 # Symlink dotfiles
 ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
