@@ -27,7 +27,7 @@ fi
 brew install shellcheck eza fzf zoxide
 
 # Install casks
-brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 copyclip monitorcontrol bitwarden
+brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 monitorcontrol bitwarden
 
 ###############################################################################
 # Mac specific settings                                                       #
