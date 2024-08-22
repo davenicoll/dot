@@ -24,7 +24,7 @@ if [[ $(which brew | grep bin | wc -l) -eq 0 ]]; then
 fi
 
 # Install formulas
-brew install shellcheck eza fzf zoxide
+brew install shellcheck eza fzf zoxide gh
 
 # Install casks
 brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 monitorcontrol bitwarden
