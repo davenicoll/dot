@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "This script will install tools and modify system settings. Requesting sudo..."
+
+# Authenticate as admin up front
+sudo -v
+
 # Symlink dotfiles
 ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
@@ -7,19 +12,16 @@ ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
 # Symlink iTerm configuration
 ln -sf "$PWD/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
 
-# Remove any old versions of the jetbrains mono nerd font
+# Remove any old versions of the jetbrains mono nerd font and install the latest version
 rm ~/Library/Fonts/JetBrainsMonoNerd*
 rm ~/Library/Fonts/JetBrainsMonoNLNerdFont*
-
-# Symlink font files
-for font_file in fonts/*.ttf; do
-  base_name=$(basename "$font_file")
-  ln -s "$PWD/$font_file" "$HOME/Library/Fonts/$base_name"
-done
+cp fonts/* "$HOME/Library/Fonts/"
 
 # Install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-export PATH="$HOME/homebrew/bin:$HOME/homebrew/sbin:$PATH"
+if [[ $(which brew | grep bin | wc -l) -eq 0 ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  export PATH="$HOME/homebrew/bin:$HOME/homebrew/sbin:$PATH"
+fi
 
 # Install formulas
 brew install shellcheck eza fzf zoxide
@@ -27,10 +29,9 @@ brew install shellcheck eza fzf zoxide
 # Install casks
 brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 copyclip monitorcontrol bitwarden
 
-# Mac specific settings
-
-# Authenticate as admin up front
-sudo -v
+###############################################################################
+# Mac specific settings                                                       #
+###############################################################################
 
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -78,6 +79,8 @@ defaults write com.apple.Siri StatusMenuVisible -bool false
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
+
+cp com.apple.symbolichotkeys.plist "/Users/$USER/Library/Preferences/com.apple.symbolichotkeys.plist"
 
 # Enable home and end keys on external keyboard
 mkdir -p ~/Library/KeyBindings
@@ -333,7 +336,7 @@ killall Dock # restart the dock
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
 # been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+# sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 # Change indexing order and disable some search results
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
 # 	MENU_DEFINITION
@@ -360,19 +363,17 @@ sudo mdutil -E / >/dev/null
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &>/dev/null && sudo tmutil disablelocal
+# hash tmutil &>/dev/null && sudo tmutil disablelocal
 
 # Disable local Time Machine snapshots
-sudo tmutil disablelocal
+# sudo tmutil disablelocal
 
 ###############################################################################
 # XCode                                                                       #
 ###############################################################################
 
 print_result() {
-  [ $1 -eq 0 ] &&
-    print_success "$2" ||
-    print_error "$2"
+  [ $1 -eq 0 ] && echo "$2" || echo "$2"
 
   return $1
 }
@@ -389,7 +390,7 @@ if ! xcode-select --print-path &>/dev/null; then
     sleep 5
   done
 
-  print_result $? 'Install XCode Command Line Tools'
+  echo $? 'Install XCode Command Line Tools'
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
