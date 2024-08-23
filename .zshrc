@@ -26,9 +26,9 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
@@ -36,11 +36,13 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::aws
 zinit snippet OMZP::azure
+zinit snippet OMZP::brew
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 
 # Load completions
+FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 autoload -Uz compinit && compinit
 
 zinit cdreplay -q
@@ -71,6 +73,13 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
+zstyle ':completion:*:*:aws' fzf-search-display true
+zstyle ':completion:*:*:checkov' fzf-search-display true
+zstyle ':completion:*:*:az' fzf-search-display true
+zstyle ':completion:*:*:helm' fzf-search-display true
+zstyle ':completion:*:*:atmos' fzf-search-display true
+zstyle ':completion:*:*:yt-dlp' fzf-search-display true
+zstyle ':completion:*:*:gh' fzf-search-display true
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --no-quotes -lag --group-directories-first --icons -1 $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --no-quotes -lag --group-directories-first --icons -1 $realpath'
 

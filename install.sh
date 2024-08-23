@@ -28,10 +28,10 @@ if [[ $(which brew | grep bin | wc -l) -eq 0 ]]; then
 fi
 
 # Install formulas
-brew install shellcheck eza fzf zoxide gh pyenv awscli tfenv
+brew install zsh-completions shellcheck eza fzf zoxide gh pyenv awscli tfenv az atmos checkov tfsec terraform-docs pre-commit yamlfmt yamllint yt-dlp ffmpeg helm htop jq yq lolcat figlet terraform-ls qemu progress bat k9s ansible
 
 # Install casks
-brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 monitorcontrol bitwarden angry-ip-scanner
+brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 monitorcontrol bitwarden angry-ip-scanner hex-fiend
 
 ###############################################################################
 # Mac specific settings                                                       #
