@@ -14,11 +14,11 @@ ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
 
 # Symlink iTerm configuration
-ln -sf "$PWD/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
+cp "$PWD/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
 
 # Remove any old versions of the jetbrains mono nerd font and install the latest version
-rm ~/Library/Fonts/JetBrainsMonoNerd*
-rm ~/Library/Fonts/JetBrainsMonoNLNerdFont*
+# rm ~/Library/Fonts/JetBrainsMonoNerd*
+# rm ~/Library/Fonts/JetBrainsMonoNLNerdFont*
 cp fonts/* "$HOME/Library/Fonts/"
 
 # Install homebrew
@@ -28,10 +28,10 @@ if [[ $(which brew | grep bin | wc -l) -eq 0 ]]; then
 fi
 
 # Install formulas
-brew install shellcheck eza fzf zoxide gh
+brew install shellcheck eza fzf zoxide gh pyenv awscli tfenv
 
 # Install casks
-brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 monitorcontrol bitwarden
+brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 monitorcontrol bitwarden angry-ip-scanner
 
 ###############################################################################
 # Mac specific settings                                                       #

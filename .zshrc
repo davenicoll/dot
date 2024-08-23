@@ -83,6 +83,7 @@ alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 # Shell integrations
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(pyenv init --path)"
 
 # Set fzf defaults
 export FZF_DEFAULT_OPTS='-m --height 60% --layout=reverse --border'
