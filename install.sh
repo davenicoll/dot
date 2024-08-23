@@ -33,6 +33,10 @@ brew install zsh-completions shellcheck eza fzf zoxide gh pyenv awscli tfenv az 
 # Install casks
 brew install --cask mac-mouse-fix rectangle shottr raycast iterm2 monitorcontrol bitwarden angry-ip-scanner hex-fiend
 
+# Install powershell
+brew install powershell/tap/powershell
+pwsh -c "Install-Module -Name Az -Repository PSGallery -Force"
+
 ###############################################################################
 # Mac specific settings                                                       #
 ###############################################################################

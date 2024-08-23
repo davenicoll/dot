@@ -73,13 +73,14 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':completion:*:*:aws' fzf-search-display true
-zstyle ':completion:*:*:checkov' fzf-search-display true
-zstyle ':completion:*:*:az' fzf-search-display true
-zstyle ':completion:*:*:helm' fzf-search-display true
-zstyle ':completion:*:*:atmos' fzf-search-display true
-zstyle ':completion:*:*:yt-dlp' fzf-search-display true
-zstyle ':completion:*:*:gh' fzf-search-display true
+# zstyle ':completion:*:*:aws' fzf-search-display true
+# zstyle ':completion:*:*:checkov' fzf-search-display true
+# zstyle ':completion:*:*:az' fzf-search-display true
+# zstyle ':completion:*:*:helm' fzf-search-display true
+# zstyle ':completion:*:*:atmos' fzf-search-display true
+# zstyle ':completion:*:*:yt-dlp' fzf-search-display true
+# zstyle ':completion:*:*:gh' fzf-search-display true
+zstyle ':completion:*:*:*' fzf-search-display true
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --no-quotes -lag --group-directories-first --icons -1 $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --no-quotes -lag --group-directories-first --icons -1 $realpath'
 
