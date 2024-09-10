@@ -41,6 +41,9 @@ pwsh -c "Install-Module -Name Az -Repository PSGallery -Force"
 # Mac specific settings                                                       #
 ###############################################################################
 
+# Set keyboard shortcuts and turn off spotlight (use raycast)
+cp -f com.apple.symbolichotkeys.plist ~/Library/Preferences/
+
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
@@ -55,6 +58,9 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Always show scrollbars
 defaults write "Apple Global Domain" AppleShowScrollBars -string Always
+
+# Disable click wallpaper to show desktop items
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop 0
 
 # Enable/disable menu bar items and set their position
 defaults write "com.apple.controlcenter" "NSStatusItem Preferred Position Battery" 260
