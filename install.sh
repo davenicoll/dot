@@ -12,6 +12,7 @@ osascript -e 'tell application "System Preferences" to quit'
 # Symlink dotfiles
 ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
+ln -sf "$PWD/.p10k.zsh" "$HOME/.p10k.zsh"
 
 # Symlink iTerm configuration
 cp "$PWD/com.googlecode.iterm2.plist" "$HOME/Library/Preferences/com.googlecode.iterm2.plist"
@@ -426,3 +427,5 @@ if ! xcode-select --print-path &>/dev/null; then
 fi
 
 print_result $? 'XCode Command Line Tools'
+
+echo "You must restart (not just logout) for changes to take effect."
