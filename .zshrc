@@ -85,7 +85,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --no-quotes -lag --group-direct
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --no-quotes -lag --group-directories-first --icons -1 $realpath'
 
 # Aliases
-alias ls='eza -lag --group-directories-first --icons'
+alias ls='eza -lag --group-directories-first --icons=auto'
 alias tf="terraform"
 alias k="kubectl"
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
