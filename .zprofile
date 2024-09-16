@@ -12,6 +12,8 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 alias azsub="$HOME/Source/davenicoll/azure-subscription-chooser/subscription-chooser.sh"
 
 export PATH="~/.npm-global/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
 # export PATH="$PATH:/Users/dave/.gem/ruby/2.6.0/bin"
 export PAGER='less -F -S -R -M -i'
 export MANPAGER='less -R -M -i +Gg'
